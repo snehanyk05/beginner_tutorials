@@ -14,7 +14,7 @@ The following dependencies are required to run this package:
 
 1. ROS Melodic
 2. catkin (http://wiki.ros.org/catkin#Installing_catkin)
-3. Ubuntu 18.04 For installing ROS (http://wiki.ros.org/kinetic/Installation)
+3. Ubuntu 18.04 For installing ROS (http://wiki.ros.org/melodic/Installation)
 4. C++ 11
 
 ## Standard install via command-line
