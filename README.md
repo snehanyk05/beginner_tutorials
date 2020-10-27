@@ -12,3 +12,4 @@ Simple starter C++ project with:
 
 # TODO
 [1] Navigating the ROS wiki - Complete
+[2] Navigating the ROS Filesystem - Complete
