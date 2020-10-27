@@ -49,11 +49,18 @@ rosrun beginner_tutorials listener
 ```
 
 # TODO
-[1] Navigating the ROS wiki - Complete
+[1] Navigating the ROS wiki - Complete 
+
 [2] Navigating the ROS Filesystem - Complete
+
 [3] Creating a ROS Package - Complete
+
 [4] Building a ROS Package - Complete
+
 [5] Understanding ROS Nodes - Complete
+
 [6] Understanding ROS Topics - Complete
+
 [7] Writing a Simple Publisher and Subscriber - Complete
+
 [8] Examining the Simple Publisher and Subscriber - Complete
