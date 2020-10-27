@@ -18,3 +18,4 @@ Simple starter C++ project with:
 [5] Understanding ROS Nodes - Complete
 [6] Understanding ROS Topics - Complete
 [7] Writing a Simple Publisher and Subscriber - Complete
+[8] Examining the Simple Publisher and Subscriber - Complete
