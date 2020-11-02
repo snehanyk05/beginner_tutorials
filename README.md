@@ -70,3 +70,5 @@ rosrun beginner_tutorials listener
 [10] Getting started with roswtf - Complete
 
 [11] Understanding ROS Services and Parameters - Complete
+
+[12] Using rqt_console and roslaunch - Complete
