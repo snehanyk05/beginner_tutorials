@@ -68,3 +68,5 @@ rosrun beginner_tutorials listener
 [9] Created branch Week9_HW 
 
 [10] Getting started with roswtf - Complete
+
+[11] Understanding ROS Services and Parameters - Complete
