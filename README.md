@@ -64,3 +64,7 @@ rosrun beginner_tutorials listener
 [7] Writing a Simple Publisher and Subscriber - Complete
 
 [8] Examining the Simple Publisher and Subscriber - Complete
+
+[9] Created branch Week9_HW 
+
+[10] Getting started with roswtf - Complete
