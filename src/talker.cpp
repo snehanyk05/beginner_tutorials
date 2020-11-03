@@ -1,4 +1,29 @@
  /**
+ *  MIT License
+ *
+ *  Copyright (c) 2020 Sneha Nayak
+ *
+ *  Permission is hereby granted, free of charge, to any person obtaining a
+ *  copy of this software and associated documentation files (the "Software"),
+ *  to deal in the Software without restriction, including without
+ *  limitation the rights to use, copy, modify, merge, publish, distribute,
+ *  sublicense, and/or sell copies of the Software, and to permit persons to
+ *  whom the Software is furnished to do so, subject to the following
+ *  conditions:
+ *
+ *  The above copyright notice and this permission notice shall be included
+ *  in all copies or substantial portions of the Software.
+ *
+ *  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ *  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ *  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+ *  THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ *  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+ *  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+ *  DEALINGS IN THE SOFTWARE.
+ */
+ 
+ /**
  * Copyright 2020
  * Copyright owner: Sneha Nayak
  * [legal/copyright]
@@ -12,7 +37,10 @@
  * This tutorial demonstrates simple sending of messages over the ROS system.
  */
 std::string talker_string = "Hi, this is the Talker Node.";
-
+/**
+ * @brief service function to handle change of message string in chatter
+ * @return bool
+ */
 bool change_talker_string(beginner_tutorials::changeStringName::Request  &req,
          beginner_tutorials::changeStringName::Response &res)
 {
@@ -21,7 +49,10 @@ bool change_talker_string(beginner_tutorials::changeStringName::Request  &req,
   // ROS_INFO("sending back response: [%ld]", (long int)res.sum);
   return true;
 }
-
+/**
+ * @brief main function to publish custom messages to chatter
+ * @return execution status
+ */
 int main(int argc, char **argv) {
   /**
    * The ros::init() function needs to see argc and argv so that it can perform
@@ -83,7 +114,7 @@ int main(int argc, char **argv) {
     std_msgs::String msg;
 
     std::stringstream ss;
-
+  //Changing msg.data type depending on the parameter set through command line or can be changes using ros service call to change_string
     if (param == "error" || talker_string =="error")
   {
     ss << "ERROR";
