@@ -34,7 +34,8 @@ int main(int argc, char **argv) {
    * part of the ROS system.
    */
   ros::init(argc, argv, "talker");
-
+  // Use Logger Level INFO
+    ROS_INFO_STREAM("Started node talker.");
   /**
    * NodeHandle is the main access point to communications with the ROS system.
    * The first NodeHandle constructed will fully initialize this node, and the last
@@ -77,6 +78,27 @@ int main(int argc, char **argv) {
     std_msgs::String msg;
 
     std::stringstream ss;
+
+    if (talker_string == "ERROR")
+  {
+    ROS_ERROR_STREAM("Sending ERROR Logger Level!");
+  }
+  else if (talker_string == "WARN")
+  {
+    ROS_WARN_STREAM("Sending WARN Logger Level!");
+  }
+  else if (talker_string == "FATAL")
+  {
+    ROS_FATAL_STREAM("Sending FATAL Logger Level!");
+  }
+  else if (talker_string == "DEBUG")
+  {
+    ROS_DEBUG_STREAM("Sending DEBUG Logger Level!");
+  }
+  else if (talker_string == "INFO")
+  {
+    ROS_INFO_STREAM("Sending INFO Logger Level!");
+  }
     ss << talker_string << count;
     msg.data = ss.str();
 

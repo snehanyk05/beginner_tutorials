@@ -1,4 +1,4 @@
- /**
+/**
  * Copyright 2020
  * Copyright owner: Sneha Nayak
  * [legal/copyright]
@@ -9,11 +9,37 @@
 /**
  * This tutorial demonstrates simple receipt of messages over the ROS system.
  */
-void chatterCallback(const std_msgs::String::ConstPtr& msg) {
-  ROS_INFO("I heard: [%s]", msg->data.c_str());
+void chatterCallback(const std_msgs::String::ConstPtr &msg)
+{
+  // ROS_INFO("I heard: [%s]", msg->data.c_str());
+  if (std::string(msg->data) == "ERROR")
+  {
+    ROS_ERROR_STREAM("I heard ERROR Logger Level!");
+  }
+  else if (msg->data == "WARN")
+  {
+    ROS_WARN_STREAM("I heard WARN Logger Level!");
+  }
+  else if (msg->data == "FATAL")
+  {
+    ROS_FATAL_STREAM("I heard FATAL Logger Level!");
+  }
+  else if (msg->data == "DEBUG")
+  {
+    ROS_DEBUG_STREAM("I heard DEBUG Logger Level!");
+  }
+  else if (msg->data == "INFO")
+  {
+    ROS_INFO_STREAM("I heard INFO Logger Level!");
+  }
+  else
+  {
+    ROS_INFO("I heard: [%s]", msg->data.c_str());
+  }
 }
 
-int main(int argc, char **argv) {
+int main(int argc, char **argv)
+{
   /**
    * The ros::init() function needs to see argc and argv so that it can perform
    * any ROS arguments and name remapping that were provided at the command line.
@@ -25,7 +51,8 @@ int main(int argc, char **argv) {
    * part of the ROS system.
    */
   ros::init(argc, argv, "listener");
-
+  // Use Logger Level INFO
+  ROS_INFO_STREAM("Started node listener.");
   /**
    * NodeHandle is the main access point to communications with the ROS system.
    * The first NodeHandle constructed will fully initialize this node, and the last
