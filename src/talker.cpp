@@ -84,24 +84,29 @@ int main(int argc, char **argv) {
 
     std::stringstream ss;
 
-    if (param == "error")
+    if (param == "error" || talker_string =="error")
   {
+    ss << "ERROR";
     ROS_ERROR_STREAM("Sending ERROR Logger Level!");
   }
-  else if (param == "warn")
+  else if (param == "warn" || talker_string =="warn")
   {
+    ss << "WARN";
     ROS_WARN_STREAM("Sending WARN Logger Level!");
   }
-  else if (param == "fatal")
+  else if (param == "fatal" || talker_string =="fatal")
   {
+    ss << "FATAL";
     ROS_FATAL_STREAM("Sending FATAL Logger Level!");
   }
-  else if (param == "debug")
+  else if (param == "debug" || talker_string =="debug")
   {
+    ss << "DEBUG";
     ROS_DEBUG_STREAM("Sending DEBUG Logger Level!");
   }
-  else if (param == "info")
+  else if (param == "info" || talker_string =="info")
   {
+    ss << "INFO";
     ROS_INFO_STREAM("Sending INFO Logger Level!");
     // ss << talker_string << count;
     // msg.data = ss.str();
@@ -109,6 +114,15 @@ int main(int argc, char **argv) {
     // ROS_INFO("%s", msg.data.c_str());
 
   }
+  else
+  {
+    ss << talker_string << count;
+    msg.data = ss.str();
+
+    ROS_INFO("%s", msg.data.c_str());
+  }
+  
+  msg.data = ss.str();
     // ss << talker_string << count;
     // msg.data = talker_string+" "+std::to_string(count);
 
