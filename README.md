@@ -75,6 +75,10 @@ source devel/setup.bash
 rosrun beginner_tutorials listener
 ```
 
+
+If you just want to use the launch file to start the nodes, do the following in a single terminal:
+
+
 We can now pass logger parameters through the commandline as follow:
 
 ```
