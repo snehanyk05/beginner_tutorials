@@ -6,11 +6,22 @@
 #include <sstream>
 #include "ros/ros.h"
 #include "std_msgs/String.h"
-
+#include "beginner_tutorials/changeStringName.h"
 
 /**
  * This tutorial demonstrates simple sending of messages over the ROS system.
  */
+std::string talker_string = "Hi, this is the Talker Node.";
+
+bool change_talker_string(beginner_tutorials::changeStringName::Request  &req,
+         beginner_tutorials::changeStringName::Response &res)
+{
+  talker_string = req.change;
+  ROS_INFO("request: New string =%s", req.change.c_str());
+  // ROS_INFO("sending back response: [%ld]", (long int)res.sum);
+  return true;
+}
+
 int main(int argc, char **argv) {
   /**
    * The ros::init() function needs to see argc and argv so that it can perform
@@ -51,12 +62,14 @@ int main(int argc, char **argv) {
   ros::Publisher chatter_pub = n.advertise<std_msgs::String>("chatter", 1000);
 
   ros::Rate loop_rate(10);
-
+  ros::ServiceServer change_string = n.advertiseService("change_string", change_talker_string);
   /**
    * A count of how many messages we have sent. This is used to create
    * a unique string for each message.
    */
   int count = 0;
+
+  
   while (ros::ok()) {
     /**
      * This is a message object. You stuff it with data, and then publish it.
@@ -64,7 +77,7 @@ int main(int argc, char **argv) {
     std_msgs::String msg;
 
     std::stringstream ss;
-    ss << "Hi, this is the Talker Node." << count;
+    ss << talker_string << count;
     msg.data = ss.str();
 
     ROS_INFO("%s", msg.data.c_str());
