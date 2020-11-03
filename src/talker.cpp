@@ -36,6 +36,11 @@ int main(int argc, char **argv) {
   ros::init(argc, argv, "talker");
   // Use Logger Level INFO
     ROS_INFO_STREAM("Started node talker.");
+
+    ros::NodeHandle node("~");
+    std::string param;
+    node.getParam("param", param);
+    ROS_INFO_STREAM("Got param: " << param << ".\n");
   /**
    * NodeHandle is the main access point to communications with the ROS system.
    * The first NodeHandle constructed will fully initialize this node, and the last
@@ -79,30 +84,35 @@ int main(int argc, char **argv) {
 
     std::stringstream ss;
 
-    if (talker_string == "ERROR")
+    if (param == "error")
   {
     ROS_ERROR_STREAM("Sending ERROR Logger Level!");
   }
-  else if (talker_string == "WARN")
+  else if (param == "warn")
   {
     ROS_WARN_STREAM("Sending WARN Logger Level!");
   }
-  else if (talker_string == "FATAL")
+  else if (param == "fatal")
   {
     ROS_FATAL_STREAM("Sending FATAL Logger Level!");
   }
-  else if (talker_string == "DEBUG")
+  else if (param == "debug")
   {
     ROS_DEBUG_STREAM("Sending DEBUG Logger Level!");
   }
-  else if (talker_string == "INFO")
+  else if (param == "info")
   {
     ROS_INFO_STREAM("Sending INFO Logger Level!");
-  }
-    ss << talker_string << count;
-    msg.data = ss.str();
+    // ss << talker_string << count;
+    // msg.data = ss.str();
 
-    ROS_INFO("%s", msg.data.c_str());
+    // ROS_INFO("%s", msg.data.c_str());
+
+  }
+    // ss << talker_string << count;
+    // msg.data = talker_string+" "+std::to_string(count);
+
+    // ROS_INFO_STREAM(msg.data);
 
     /**
      * The publish() function is how you send messages. The parameter
