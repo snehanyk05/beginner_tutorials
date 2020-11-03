@@ -45,8 +45,8 @@ str_msg MessageObj;
  * @brief service function to handle change of message string in chatter
  * @return bool
  */
-bool change_string(const beginner_tutorials::changeStringName::Request  &req,
-const beginner_tutorials::changeStringName::Response &res) {
+bool change_string_func(beginner_tutorials::changeStringName::Request  &req,
+beginner_tutorials::changeStringName::Response &res) {
   MessageObj.message = req.change;
   ROS_INFO("request: New string =%s", req.change.c_str());
   // ROS_INFO("sending back response: [%ld]", (long int)res.sum);
@@ -104,7 +104,7 @@ int main(int argc, char **argv) {
 
   ros::Rate loop_rate(10);
   ros::ServiceServer change_string =
-  n.advertiseService("change_string", change_string);
+  n.advertiseService("change_string", change_string_func);
   /**
    * A count of how many messages we have sent. This is used to create
    * a unique string for each message.
