@@ -1,8 +1,12 @@
 project(beginner_tutorials)
 
 ## Find catkin and any catkin packages
-find_package(catkin REQUIRED COMPONENTS roscpp rospy std_msgs genmsg)
+find_package(catkin REQUIRED COMPONENTS roscpp rospy std_msgs genmsg message_generation)
 
+add_service_files(
+  FILES
+  changeStringName.srv
+)
 
 ## Generate added messages and services
 generate_messages(DEPENDENCIES std_msgs)
