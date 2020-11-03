@@ -1,0 +1,16 @@
+<launch>
+ <arg name="param" default="warn"/>
+    <node
+        pkg="beginner_tutorials"
+        type="talker"
+        name="talker"
+        required ="true"
+        args="_param:=$(arg param)"
+    />
+
+    <node
+        pkg="beginner_tutorials"
+        type="listener"
+        name="listener"
+    />
+</launch>
