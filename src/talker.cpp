@@ -22,8 +22,7 @@
  *  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
  *  DEALINGS IN THE SOFTWARE.
  */
- 
- /**
+/**
  * Copyright 2020
  * Copyright owner: Sneha Nayak
  * [legal/copyright]
@@ -36,15 +35,19 @@
 /**
  * This tutorial demonstrates simple sending of messages over the ROS system.
  */
-std::string talker_string = "Hi, this is the Talker Node.";
+
+struct str_msg {
+  std::string message;
+};
+str_msg MessageObj;
+
 /**
  * @brief service function to handle change of message string in chatter
  * @return bool
  */
-bool change_talker_string(beginner_tutorials::changeStringName::Request  &req,
-         beginner_tutorials::changeStringName::Response &res)
-{
-  talker_string = req.change;
+bool change_string(const beginner_tutorials::changeStringName::Request  &req,
+const beginner_tutorials::changeStringName::Response &res) {
+  MessageObj.message = req.change;
   ROS_INFO("request: New string =%s", req.change.c_str());
   // ROS_INFO("sending back response: [%ld]", (long int)res.sum);
   return true;
@@ -69,6 +72,7 @@ int main(int argc, char **argv) {
     ROS_INFO_STREAM("Started node talker.");
 
     ros::NodeHandle node("~");
+    MessageObj.message = "Hi, this is the Talker Node.";
     std::string param;
     node.getParam("param", param);
     ROS_INFO_STREAM("Got param: " << param << ".\n");
@@ -99,14 +103,13 @@ int main(int argc, char **argv) {
   ros::Publisher chatter_pub = n.advertise<std_msgs::String>("chatter", 1000);
 
   ros::Rate loop_rate(10);
-  ros::ServiceServer change_string = n.advertiseService("change_string", change_talker_string);
+  ros::ServiceServer change_string =
+  n.advertiseService("change_string", change_string);
   /**
    * A count of how many messages we have sent. This is used to create
    * a unique string for each message.
    */
   int count = 0;
-
-  
   while (ros::ok()) {
     /**
      * This is a message object. You stuff it with data, and then publish it.
@@ -114,29 +117,21 @@ int main(int argc, char **argv) {
     std_msgs::String msg;
 
     std::stringstream ss;
-  //Changing msg.data type depending on the parameter set through command line or can be changes using ros service call to change_string
-    if (param == "error" || talker_string =="error")
-  {
+  // Changing msg.data type depending on the parameter set through command line
+  // or can be changes using ros service call to change_string
+    if (param == "error" || MessageObj.message =="error") {
     ss << "ERROR";
     ROS_ERROR_STREAM("Sending ERROR Logger Level!");
-  }
-  else if (param == "warn" || talker_string =="warn")
-  {
+  } else if (param == "warn" || MessageObj.message =="warn") {
     ss << "WARN";
     ROS_WARN_STREAM("Sending WARN Logger Level!");
-  }
-  else if (param == "fatal" || talker_string =="fatal")
-  {
+  } else if (param == "fatal" || MessageObj.message =="fatal") {
     ss << "FATAL";
     ROS_FATAL_STREAM("Sending FATAL Logger Level!");
-  }
-  else if (param == "debug" || talker_string =="debug")
-  {
+  } else if (param == "debug" || MessageObj.message =="debug") {
     ss << "DEBUG";
     ROS_DEBUG_STREAM("Sending DEBUG Logger Level!");
-  }
-  else if (param == "info" || talker_string =="info")
-  {
+  } else if (param == "info" || MessageObj.message =="info") {
     ss << "INFO";
     ROS_INFO_STREAM("Sending INFO Logger Level!");
     // ss << talker_string << count;
@@ -144,15 +139,12 @@ int main(int argc, char **argv) {
 
     // ROS_INFO("%s", msg.data.c_str());
 
-  }
-  else
-  {
-    ss << talker_string << count;
+  } else {
+    ss << MessageObj.message << count;
     msg.data = ss.str();
 
     ROS_INFO("%s", msg.data.c_str());
   }
-  
   msg.data = ss.str();
     // ss << talker_string << count;
     // msg.data = talker_string+" "+std::to_string(count);

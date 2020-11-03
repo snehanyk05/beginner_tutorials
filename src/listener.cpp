@@ -40,31 +40,19 @@
  * @param const std_msgs::String::ConstPtr &msg
  * @return void
  */
-void chatterCallback(const std_msgs::String::ConstPtr &msg)
-{
+void chatterCallback(const std_msgs::String::ConstPtr &msg) {
   // ROS_INFO("I heard: [%s]", msg->data.c_str());
-  if (std::string(msg->data) == "ERROR")
-  {
+  if (std::string(msg->data) == "ERROR") {
     ROS_ERROR_STREAM("I heard ERROR Logger Level!");
-  }
-  else if (msg->data == "WARN")
-  {
+  } else if (msg->data == "WARN") {
     ROS_WARN_STREAM("I heard WARN Logger Level!");
-  }
-  else if (msg->data == "FATAL")
-  {
+  } else if (msg->data == "FATAL") {
     ROS_FATAL_STREAM("I heard FATAL Logger Level!");
-  }
-  else if (msg->data == "DEBUG")
-  {
+  } else if (msg->data == "DEBUG") {
     ROS_DEBUG_STREAM("I heard DEBUG Logger Level!");
-  }
-  else if (msg->data == "INFO")
-  {
+  } else if (msg->data == "INFO") {
     ROS_INFO_STREAM("I heard INFO Logger Level!");
-  }
-  else
-  {
+  } else {
     ROS_INFO("I heard: [%s]", msg->data.c_str());
   }
 }
@@ -72,8 +60,7 @@ void chatterCallback(const std_msgs::String::ConstPtr &msg)
  * @brief main function to subscribe to chatter
  * @return execution status
  */
-int main(int argc, char **argv)
-{
+int main(int argc, char **argv) {
   /**
    * The ros::init() function needs to see argc and argv so that it can perform
    * any ROS arguments and name remapping that were provided at the command line.
