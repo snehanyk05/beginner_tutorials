@@ -50,6 +50,7 @@ bool change_string_func(beginner_tutorials::changeStringName::Request  &req,
 beginner_tutorials::changeStringName::Response &res) {
   MessageObj.message = req.change;
   ROS_INFO("request: New string =%s", req.change.c_str());
+  res.response = req.change;
   // ROS_INFO("sending back response: [%ld]", (long int)res.sum);
   return true;
 }
