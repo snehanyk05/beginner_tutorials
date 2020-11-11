@@ -50,7 +50,7 @@ TEST(testNode, testResponse) {
 
   beginner_tutorials::changeStringName srv;
     srv.request.change = "Test";
-    client.call(srv.request);
+    client.call(srv);
     EXPECT_EQ("Test", srv.response.response);
 }
 
