@@ -88,6 +88,82 @@ roslaunch beginner_tutorials beginner_tutorials.launch param:=error
 ```
 param can have any of these logger level values: error, warn, debug, info, fatal
 
+## Service File
+
+To run the service
+```
+cd <<Your_catkin_workspace>>
+source devel/setup.bash
+rosservice call /change 'New message'
+
+```
+
+## TF frames 
+To run frames:
+```
+cd <<Your_catkin_workspace>>
+source devel/setup.bash
+rosrun beginner_tutorials talker
+```
+In other terminal
+```
+cd <<Your_catkin_workspace>>
+source devel/setup.bash
+rosrun tf tf_echo /world /talk
+```
+To see the pdf file of tf frame:
+
+```
+cd catkin_ws
+source devel/setup.bash
+rosrun tf view_frames
+
+```
+
+## Rosbag
+To run robag,
+
+In one terminal:
+```
+cd <<Your_catkin_workspace>>
+source devel/setup.bash
+roslaunch beginner_tutorials beginner_tutorials.launch param:=error record:=true
+```
+You can now set the record parameter to true in order to record bag file
+
+To be able to play the rosbag:
+
+In one terminal:
+
+```
+roscore
+```
+In a second terminal:
+
+```
+cd <<Your_catkin_workspace>>
+source devel/setup.bash
+rosbag play src/beginner_tutorials/results/beginner_tutorials.bag
+
+```
+
+In a 3rd terminal:
+
+```
+cd <<Your_catkin_workspace>>
+source devel/setup.bash
+rosrun beginner_tutorials listener
+```
+
+## Rostest
+
+To check if all tests are passing successfully:
+```
+cd <<Your_catkin_workspace>>
+catkin_make run_tests_beginner_tutorials
+```
+You should be able to see that the test cases pass.
+
 
 
 # TODO
