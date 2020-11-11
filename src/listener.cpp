@@ -67,7 +67,6 @@ int main(int argc, char **argv) {
    * For programmatic remappings you can use a different version of init() which takes
    * remappings directly, but for most command-line programs, passing argc and argv is
    * the easiest way to do it.  The third argument to init() is the name of the node.
-   *
    * You must call one of the versions of ros::init() before using any other
    * part of the ROS system.
    */

@@ -67,7 +67,9 @@ void poseCallback() {
     tf::Quaternion q;
     q.setRPY(1, 1, 0);
     transform.setRotation(q);
-    bc.sendTransform(tf::StampedTransform(transform, ros::Time::now(), "world", "talk"));  // broadcast /talk frame with parent /world
+    bc.sendTransform(tf::StampedTransform(transform,
+    ros::Time::now(), "world", "talk"));
+    // broadcast /talk frame with parent /world
 }
 /**
  * @brief main function to publish custom messages to chatter

@@ -29,11 +29,14 @@
  *@copyright  MIT License
  *@brief      Talker Node test
  */
-
-#include <gtest/gtest.h>
-#include "ros/ros.h"
+#include <ros/ros.h>
 #include <ros/service_client.h>
-#include "beginner_tutorials/changeStringName.h"
+#include <gtest/gtest.h>
+#include <beginner_tutorials/changeStringName.h>
+
+
+
+
 /**
  * @brief      Tests whether the service exists and then changes string.
  * @param      testNode         gtest framework type
