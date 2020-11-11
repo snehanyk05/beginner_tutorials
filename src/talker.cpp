@@ -133,7 +133,7 @@ int main(int argc, char **argv) {
     std_msgs::String msg;
 
     std::stringstream ss;
-    poseCallback()
+    poseCallback();
 
   // Changing msg.data type depending on the parameter set through command line
   // or can be changes using ros service call to change_string
