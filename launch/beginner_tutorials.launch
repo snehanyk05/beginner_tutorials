@@ -1,4 +1,5 @@
 <launch>
+<arg name="record" default="false" />
  <arg name="param" default="warn"/>
     <node
         pkg="beginner_tutorials"
@@ -13,4 +14,5 @@
         type="listener"
         name="listener"
     />
+    <node pkg="rosbag" name="rosbag_record_all" type="record" respawn="true" output="screen" args="-a -O $(find beginner_tutorials)/results/beginner_tutorials.bag" if="$(arg record)"/>
 </launch>
